@@ -24,7 +24,7 @@ function getColor(feature) {
     return '#3388ff';
 }
 
-fetch('school_colored.geojson')
+fetch('school.geojson')
   .then(response => response.json())
   .then(data => {
     L.geoJSON(data, {
