@@ -22,7 +22,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // 讀取並顯示 GeoJSON
-fetch('school_colored.geojson')
+fetch('school_colored_fixed.geojson')
   .then(response => response.json())
   .then(data => {
     L.geoJSON(data, {
