@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>塭仔圳</title>
+<title>塭仔圳 (美化修正版)</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <style>html, body { margin:0; height:100%; } #map { width: 100%; height: 100%; }</style>
@@ -30,7 +30,7 @@ fetch('school_colored_fixed.geojson')
     L.geoJSON(data, {
       style: function(feature) {
         return {
-          color: '#000000', // 邊框顏色固定黑色以清楚辨識
+          color: getColor(feature), // 邊框顏色與填色相同以維持一致
           weight: 1,
           fillOpacity: 0.5,
           fillColor: getColor(feature)
@@ -41,6 +41,22 @@ fetch('school_colored_fixed.geojson')
         var info = '';
         for (var key in props) { info += key + ': ' + props[key] + '<br>'; }
         layer.bindPopup(info);
+
+        // 恢復點擊高亮顯示
+        layer.on('click', function(e) {
+          layer.setStyle({
+            weight: 3,
+            color: '#FFFF00', // 點擊時顯示黃框高亮
+            fillOpacity: 0.7
+          });
+          setTimeout(function() {
+            layer.setStyle({
+              weight: 1,
+              color: getColor(feature),
+              fillOpacity: 0.5
+            });
+          }, 1000); // 高亮 1 秒後恢復原狀
+        });
       }
     }).addTo(map);
   })
