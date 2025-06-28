@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>塭仔圳 GeoJSON 顏色顯示 Leaflet DEMO</title>
+<title>塭仔圳 GeoJSON 顏色顯示 Leaflet DEMO (修正版)</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <style>html, body { margin:0; height:100%; } #map { width: 100%; height: 100%; }</style>
@@ -16,16 +16,24 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 20,
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
+
+function getColor(feature) {
+    if (feature.properties && feature.properties.color) {
+        return feature.properties.color;
+    }
+    return '#3388ff';
+}
+
 fetch('school_colored_fixed.geojson')
   .then(response => response.json())
   .then(data => {
     L.geoJSON(data, {
       style: function(feature) {
         return {
-          color: feature.properties.color || '#3388ff',
+          color: '#000000', // 邊框顏色固定黑色以清楚辨識
           weight: 1,
           fillOpacity: 0.5,
-          fillColor: feature.properties.color || '#3388ff'
+          fillColor: getColor(feature)
         };
       },
       onEachFeature: function(feature, layer) {
@@ -35,7 +43,8 @@ fetch('school_colored_fixed.geojson')
         layer.bindPopup(info);
       }
     }).addTo(map);
-  });
+  })
+  .catch(error => console.error('GeoJSON 加載失敗:', error));
 </script>
 </body>
 </html>
