@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>塭仔圳 (美化修正版)</title>
+<title>塭仔圳(隱藏 color 屬性)</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <style>html, body { margin:0; height:100%; } #map { width: 100%; height: 100%; }</style>
@@ -24,13 +24,13 @@ function getColor(feature) {
     return '#3388ff';
 }
 
-fetch('school_colored_fixed.geojson')
+fetch('school_colored.geojson')
   .then(response => response.json())
   .then(data => {
     L.geoJSON(data, {
       style: function(feature) {
         return {
-          color: getColor(feature), // 邊框顏色與填色相同以維持一致
+          color: getColor(feature),
           weight: 1,
           fillOpacity: 0.5,
           fillColor: getColor(feature)
@@ -39,14 +39,17 @@ fetch('school_colored_fixed.geojson')
       onEachFeature: function(feature, layer) {
         var props = feature.properties;
         var info = '';
-        for (var key in props) { info += key + ': ' + props[key] + '<br>'; }
+        for (var key in props) {
+          if (key !== 'color') { // 不顯示 color 屬性
+            info += key + ': ' + props[key] + '<br>';
+          }
+        }
         layer.bindPopup(info);
 
-        // 恢復點擊高亮顯示
         layer.on('click', function(e) {
           layer.setStyle({
             weight: 3,
-            color: '#FFFF00', // 點擊時顯示黃框高亮
+            color: '#FFFF00',
             fillOpacity: 0.7
           });
           setTimeout(function() {
@@ -55,7 +58,7 @@ fetch('school_colored_fixed.geojson')
               color: getColor(feature),
               fillOpacity: 0.5
             });
-          }, 1000); // 高亮 1 秒後恢復原狀
+          }, 1000);
         });
       }
     }).addTo(map);
