@@ -40,10 +40,13 @@ fetch('school.geojson')
         var props = feature.properties;
         var info = '';
         for (var key in props) {
-          if (key !== 'color') { // 不顯示 color 屬性
+          if (key !== 'color' && key !== '圖片') { // 不顯示 color 屬性
             info += key + ': ' + props[key] + '<br>';
           }
         }
+	    if (props.圖片) {
+	        info += '<img src="' + props.圖片 + '" style="max-width:100%; margin-top:5px;">';
+	    }
         layer.bindPopup(info);
 
         layer.on('click', function(e) {
