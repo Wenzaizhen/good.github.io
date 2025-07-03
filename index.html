@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://unpkg.com/leaflet.pattern/leaflet.pattern.min.js"></script>
 <title>塭仔圳土地分配圖</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -38,15 +37,8 @@ style: function(feature) {
     };
 
     if (feature.properties && feature.properties.管理人 === "社宅預定地") {
-        var pattern = new L.StripePattern({
-            weight: 2,
-            spaceWeight: 4,
-            color: '#555',
-            opacity: 0.6,
-            angle: 45
-        });
-        pattern.addTo(map);
-        styleObj.fillPattern = pattern;
+		styleObj.fillColor = "#B39DDB"; // 淺紫色作為社宅預定地識別色
+		styleObj.color = "#5E35B1"; // 深紫色邊框
     }
 
     return styleObj;
