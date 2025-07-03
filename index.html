@@ -50,8 +50,8 @@ fetch('school.geojson')
           }
         }
         if (props.圖片) {
-            info += '<img src="' + props.圖片 + '" style="max-width:300px; margin-top:5px;">';
-        }
+            info += '<img src="' + props.圖片 + '" style="max-width:300px; margin-top:5px;" onload="this.closest(\'.leaflet-popup-content\').parentElement._popup.update();">';
+
         layer.bindPopup(info);
 
         // 疊加 ICON 顯示
