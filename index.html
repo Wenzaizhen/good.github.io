@@ -65,7 +65,7 @@ fetch('school.geojson')
             if (feature.properties.用途 === "社宅預定地") {
                 emoji = "🏠";
             } else if (feature.properties.狀態 === "興建中") {
-                emoji = "🏗️";
+                emoji = "🏗";
             } 
             if (emoji !== "") {
                 var icon = L.divIcon({
