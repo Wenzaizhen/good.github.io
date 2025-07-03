@@ -50,9 +50,20 @@ fetch('school.geojson')
           }
         }
         if (props.圖片) {
-            info += '<img src="' + props.圖片 + '" style="max-width:300px; margin-top:5px;" onload="this.closest(\'.leaflet-popup-content\').parentElement._popup.update();">';
-
+            info += '<img src="' + props.圖片 + '" style="max-width:300px; margin-top:5px;">';
+        }
         layer.bindPopup(info);
+        
+                // 修正彈窗圖片首次顯示尺寸問題
+        layer.on("popupopen", function(e) {
+            var popup = e.popup;
+            var images = popup.getElement().querySelectorAll("img");
+            images.forEach(function(img) {
+                img.addEventListener("load", function() {
+                    popup.update();
+                });
+            });
+        });
 
         // 疊加 ICON 顯示
         if (feature.geometry.type === "Polygon") {
