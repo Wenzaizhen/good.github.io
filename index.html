@@ -79,7 +79,10 @@ fetch('school.geojson')
                 emoji = "🏗️";
             } else if (feature.properties.管理人 === "教育局") {
                 emoji = "🏫";
+            } else if (feature.properties.用途 === "變電所用地") {
+                emoji = "⚡";
             } 
+            
             if (emoji !== "") {
                 var icon = L.divIcon({
                     html: '<div style="font-size: 14px;">' + emoji + '</div>',
