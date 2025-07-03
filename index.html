@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://unpkg.com/leaflet.pattern/leaflet.pattern.min.js"></script>
 <title>塭仔圳土地分配圖</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -28,14 +29,29 @@ fetch('school.geojson')
   .then(response => response.json())
   .then(data => {
     L.geoJSON(data, {
-      style: function(feature) {
-        return {
-          color: getColor(feature),
-          weight: 1,
-          fillOpacity: 0.5,
-          fillColor: getColor(feature)
-        };
-      },
+style: function(feature) {
+    let styleObj = {
+      color: getColor(feature),
+      weight: 1,
+      fillOpacity: 0.5,
+      fillColor: getColor(feature)
+    };
+
+    if (feature.properties && feature.properties.管理人 === "社宅預定地") {
+        var pattern = new L.StripePattern({
+            weight: 2,
+            spaceWeight: 4,
+            color: '#555',
+            opacity: 0.6,
+            angle: 45
+        });
+        pattern.addTo(map);
+        styleObj.fillPattern = pattern;
+    }
+
+    return styleObj;
+},
+
       onEachFeature: function(feature, layer) {
         var props = feature.properties;
         var info = '';
