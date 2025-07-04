@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="description" content="塭仔圳重劃區推案進度與土地分配圖，新莊泰山塭仔圳最新推案地圖、社宅預定地、抵費地、公園用地即時查詢，協助掌握投資與購屋決策。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+
+
+
+<title>📍 新莊泰山塭仔圳推案與土地分配地圖 📍</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<style>html, body { margin:0; height:100%; } #map { width: 100%; height: 100%; }</style>
+</head>
+<body>
+<div style="display:none;">
+塭仔圳推案地圖、新莊泰山土地分配圖、塭仔圳建案地圖、塭仔圳重劃區推案進度、社宅預定地查詢、抵費地查詢、公園用地查詢。
+</div>
+
+<a id="bottomBar" onclick="gtag('event', 'click', {'event_category': 'button', 'event_label': 'LINE群邀請點擊' });" href="https://line.me/ti/g2/2CsG8s2znH7ZG4v9zZd1hG8Imb66ABHCPEBKdg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank">📱 點此加入塭仔圳建案 LINE 社群掌握最新資訊</a>
+<style>
+#bottomBar {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00c300;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 999;
+}
+</style>
+
+<div id="map"></div>
+
+<script src="main_obf.js"></script>
+</body>
+</html>
