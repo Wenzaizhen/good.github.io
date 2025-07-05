@@ -86,6 +86,16 @@ fetch('school.geojson')
             styleObj.color = "#aeea00";
             styleObj.weight = 4;
         }
+        if (feature.properties && feature.properties.用途 === "輔大捷運站4號出口") {
+            styleObj.fillColor = "#868686";
+            styleObj.color = "#aeea00";
+            styleObj.weight = 4;
+        }
+        if (feature.properties && feature.properties.用途 === "機捷貴和站") {
+            styleObj.fillColor = "#868686";
+            styleObj.color = "#aeea00";
+            styleObj.weight = 4;
+        }
         return styleObj;
       },
       onEachFeature: function(feature, layer) {
