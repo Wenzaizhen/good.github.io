@@ -30,7 +30,7 @@ gtag('config', 'G-LVXHSZW7HT');
 </head>
 <body>
 <div style="display:none;">
-塭仔圳推案地圖、新莊泰山土地分配圖、塭仔圳建案地圖、塭仔圳重劃區推案進度、社宅預定地查詢、抵費地查詢、公園用地查詢。
+塭仔圳推案地圖、新莊泰山土地分配圖、塭仔圳建案地圖、塭仔圳重劃區推案進度、社宅預定地查詢、抵費地查詢、公園用地查詢、塭子圳、溫子圳
 </div>
 
 <a id="bottomBar" onclick="gtag('event', 'click', {'event_category': 'button', 'event_label': 'LINE群邀請點擊' });" href="https://line.me/ti/g2/2CsG8s2znH7ZG4v9zZd1hG8Imb66ABHCPEBKdg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank">📱 點此加入塭仔圳建案 LINE 社群掌握最新資訊</a>
@@ -74,12 +74,17 @@ fetch('school.geojson')
         let styleObj = {
           color: getColor(feature),
           weight: 1,
-          fillOpacity: 0.5,
+          fillOpacity: 0.6,
           fillColor: getColor(feature)
         };
         if (feature.properties && feature.properties.管理人 === "社宅預定地") {
             styleObj.fillColor = "#B39DDB";
             styleObj.color = "#5E35B1";
+        }
+        if (feature.properties && feature.properties.用途 === "機捷泰山站") {
+            styleObj.fillColor = "#868686";
+            styleObj.color = "#aeea00";
+            styleObj.weight = 4;
         }
         return styleObj;
       },
