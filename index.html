@@ -152,9 +152,16 @@ fetch('school.geojson')
           });
           setTimeout(function() {
             layer.setStyle({
-              weight: 1,
-              color: getColor(feature),
-              fillOpacity: 0.5
+	          if (feature.properties && feature.properties.用途 === "機捷泰山站") {
+	            color: "#aeea00",
+	            weight: 4
+	          }
+	          else {
+				weight: 1,
+				color: getColor(feature),
+				fillOpacity: 0.5
+	          }
+
             });
           }, 1000);
         });
