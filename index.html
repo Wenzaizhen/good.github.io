@@ -63,6 +63,18 @@ function getColor(feature) {
     if (feature.properties && feature.properties.color) {
         return feature.properties.color;
     }
+
+
+function getBorderColor(feature) {
+    if (feature.properties && feature.properties.管理人 === "社宅預定地") {
+        return "#5E35B1"; // 社宅外框
+    }
+    if (feature.properties && feature.properties.用途 === "機捷泰山站") {
+        return "#AEEA00"; // 機捷站外框
+    }
+    return '#90aaad'; // 其他預設與填色相同
+}
+
     return '#90aaad';
 }
 
@@ -77,6 +89,8 @@ fetch('school.geojson')
           fillOpacity: 0.6,
           fillColor: getColor(feature)
         };
+        console.log('名稱:', feature.properties.名稱);
+		console.log('用途:', feature.properties.用途);
         if (feature.properties && feature.properties.管理人 === "社宅預定地") {
             styleObj.fillColor = "#B39DDB";
             styleObj.color = "#5E35B1";
@@ -152,8 +166,9 @@ fetch('school.geojson')
           });
           setTimeout(function() {
             layer.setStyle({
-              weight: 1,
-              color: getColor(feature),
+              weight: feature.properties.用途 === "機捷泰山站" ? 4 :
+                     feature.properties.管理人 === "社宅預定地" ? 1 : 1,
+              color: getBorderColor(feature),
               fillOpacity: 0.5
             });
           }, 1000);
