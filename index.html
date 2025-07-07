@@ -99,22 +99,19 @@ fetch('school.geojson')
         return styleObj;
       },
       onEachFeature: function(feature, layer) {
-// --------- 點擊色塊畫同心圓並加上標籤 -----------
+
 layer.on('click', function(e) {
-    // 1. 先移除舊圓與舊標籤
     if(window._bufferCircle300) map.removeLayer(window._bufferCircle300);
     if(window._bufferCircle500) map.removeLayer(window._bufferCircle500);
     if(window._bufferCircleLabel300) map.removeLayer(window._bufferCircleLabel300);
     if(window._bufferCircleLabel500) map.removeLayer(window._bufferCircleLabel500);
 
-    // 2. 計算形心
     var latlngs = feature.geometry.coordinates[0].map(function(coord) {
         return [coord[1], coord[0]];
     });
     var bounds = L.latLngBounds(latlngs);
     var center = bounds.getCenter();
 
-    // 畫 300m、500m 圓（不互動）
     window._bufferCircle300 = L.circle(center, {
         color: '#43a047',
         fillColor: '#b9f6ca',
@@ -130,11 +127,9 @@ layer.on('click', function(e) {
         interactive: false
     }).addTo(map);
 
-    // 取緯度往北偏移 meters 公尺
     function latOffset(center, meters) {
         return center.lat + (meters / 111320);
     }
-    // 圓頂標籤
     window._bufferCircleLabel300 = L.marker(
         [latOffset(center, 300), center.lng],
         {
@@ -161,10 +156,8 @@ layer.on('click', function(e) {
         }
     ).addTo(map);
 
-    // 4. 地圖平移（形心向北偏移）
     map.panTo([center.lat + 0.0015, center.lng]);
 });
-// --------- 同心圓功能結束 -----------
 
         var props = feature.properties;
         var info = '';
@@ -178,7 +171,6 @@ layer.on('click', function(e) {
         }
         layer.bindPopup(info);
         
-        // 修正彈窗圖片首次顯示尺寸問題
         layer.on("popupopen", function(e) {
             var popup = e.popup;
             var images = popup.getElement().querySelectorAll("img");
@@ -189,7 +181,6 @@ layer.on('click', function(e) {
             });
         });
 
-		// 疊加 ICON 顯示
         if (feature.geometry.type === "Polygon") {
             var latlngs = feature.geometry.coordinates[0].map(function(coord) {
                 return [coord[1], coord[0]];
