@@ -1,51 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="3;url=https://goodflux.tw" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <title>網站已搬遷至 https://goodflux.tw</title>
+    <meta name="description" content="GoodFlux WZ 城景平台已完整搬遷至 https://goodflux.tw，請更新您的書籤。">
 
+    <!-- Open Graph for LINE / FB -->
+    <meta property="og:title" content="網站已搬遷至 GoodFlux.tw" />
+    <meta property="og:description" content="GoodFlux WZ 城景平台已搬遷，將在 3 秒後自動導向新網址。" />
+    <meta property="og:url" content="https://goodflux.tw" />
+    <meta property="og:image" content="https://goodflux.tw/img/og-default.jpg" />
 
-  <meta charset="UTF-8">
-  <meta name="description" content="塭仔圳重劃區推案進度與土地分配圖，新莊泰山塭仔圳最新推案地圖、社宅預定地、抵費地、公園用地即時查詢，協助掌握投資與購屋決策。">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LVXHSZW7HT"></script>
-
-
-  <title>📍 新莊泰山塭仔圳推案與土地分配地圖 📍</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <style>
-    html, body { margin: 0; height: 100%; }
-    #map { width: 100%; height: 100%; }
-
-    #bottomBar {
-      position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
-      background: #00c300; color: white; padding: 8px 15px; border-radius: 50px;
-      font-size: 14px; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.3); z-index: 999;
-    }
-  </style>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+            background: #f9fafb;
+            color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: #fff;
+            padding: 32px 40px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,.08);
+            text-align: center;
+            max-width: 420px;
+        }
+        h1 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 15px;
+            margin: 8px 0 18px;
+            line-height: 1.7;
+        }
+        a.button {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #10b981;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .note {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
-  <div style="display:none;">
-    塭仔圳推案地圖、新莊泰山土地分配圖、塭仔圳建案地圖、塭仔圳重劃區推案進度、社宅預定地查詢、抵費地查詢、公園用地查詢、塭子圳、溫子圳
-  </div>
+    <div class="card">
+        <h1>網站已搬家</h1>
+        <p>GoodFlux WZ 城景平台已搬遷至新的正式網址：</p>
+        <p><strong>https://goodflux.tw</strong></p>
 
-  <a id="bottomBar"
-     onclick="gtag('event', 'click', {'event_category': 'button', 'event_label': 'LINE群邀請點擊'});"
-     href="https://line.me/ti/g2/2CsG8s2znH7ZG4v9zZd1hG8Imb66ABHCPEBKdg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
-     target="_blank">📱 點此加入塭仔圳建案 LINE 社群掌握最新資訊</a>
+        <a href="https://goodflux.tw" class="button">立即前往新網站</a>
 
-  <!-- 搜尋列 -->
-  <div id="searchBar"
-       style="position:fixed;top:15px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(255,255,255,0.96);border-radius:10px;padding:8px 12px 6px 12px;box-shadow:0 2px 6px rgba(0,0,0,0.08);display:flex;gap:10px;">
-    <input type="text" id="managerSearch" placeholder="輸入管理人關鍵字..." style="font-size:15px;padding:3px 8px;">
-    <button id="clearHighlight" style="background:#FFD600;color:#333;font-weight:bold;border:none;border-radius:6px;padding:3px 14px;cursor:pointer;">清除</button>
-  </div>
-
-  <div id="map"></div>
-
-<script src="./js/app.obf.js" defer></script>
+        <p class="note">頁面將在 3 秒後自動導向。</p>
+    </div>
 </body>
 </html>
